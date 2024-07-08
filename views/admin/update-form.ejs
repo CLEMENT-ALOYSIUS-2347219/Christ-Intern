@@ -1,0 +1,72 @@
+<%- include('../partials/header') %>
+<div class="container">
+<form id="update_post">
+    <div class="form-row">
+        <div class="form-group col-12">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" name="title" placeholder="e.g. Web Development" required>
+        </div>
+        <div class="form-group col-12">
+            <label for="location">Location</label>
+            <input type="text" class="form-control" name="location" placeholder="e.g. Jaipur" required>
+        </div>
+        <div class="form-group" style="padding-left: 5px;">
+            <div class="form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" name="isWFH" value="true" >
+                <label for="" class="form-check-label">Work from home</label>
+            </div>
+        </div>
+        <div class="form-group col-12">
+            <label for="startD">Start Date</label>
+            <input type="text" class="form-control" name="startD" placeholder="e.g. Immediately" required>
+        </div>
+        <div class="form-group col-12">
+            <label for="duration">Duration</label>
+            <input type="text" class="form-control" name="duration" placeholder="e.g. 2 Months" required>
+        </div>
+        <div class="form-group col-12">
+            <label for="stipend">Stipend</label>
+            <input type="text" class="form-control" name="stipend" placeholder="e.g. 2000/month" required>
+        </div>
+        <div class="form-group col-12">
+            <label for="applyBy">Apply By</label>
+            <input type="text" class="form-control" name="applyBy" placeholder="e.g. 14 Sep' 20" required>
+        </div>
+        <div class="form-group col-12">
+            <label for="about">About the internship </label>
+            <textarea class="form-control" name="about" id="" placeholder="About the internship...." cols="5" rows="8"></textarea>
+        </div>
+        <div class="form-group col-12">
+            <label for="skills">Skills required <span class="label_hint">(# to separate)</span></label>
+            <input type="text" class="form-control" name="skills" placeholder="e.g. PHP#HTML#Python" required>
+        </div>
+        <div class="form-group col-12">
+            <label for="eligibility">Eligibility </label>
+            <textarea class="form-control" name="eligibility" id="" placeholder="Who can apply...." cols="5" rows="8"></textarea>
+        </div>
+        <div class="form-group col-12">
+            <label for="perks">Perks </label>
+            <textarea class="form-control" name="perks" id="" placeholder="Perks...." cols="5" rows="8"></textarea>
+        </div>
+        <div class="form-group col-12">
+            <label for="noOpen">Number of openings</label>
+            <input type="number" class="form-control" name="noOpen" placeholder="e.g. 4" required>
+        </div>
+        <button type="submit" class="btn btn-primary submit-btn">Save</button>
+    </div>
+</form>
+</div>
+
+<%- include('../partials/footer') %>
+
+<script>
+    $("#update_post input[name='isWFH']").on('change', () => {
+        if($("#update_post input[name='isWFH']").is(':checked')) {
+            $("#update_post input[name='location']").val('Work from Home');
+            $("#update_post input[name='location']").attr('disabled', true);
+        } else {
+            $("#update_post input[name='location']").attr('disabled', false);
+            $("#update_post input[name='location']").val('');
+        }
+    })
+</script>

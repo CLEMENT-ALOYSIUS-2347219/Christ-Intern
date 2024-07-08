@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+<div class="container-fluid " style="padding: 0 8%;">
+    <a class="navbar-brand d-flex" href="#">
+      <img src="/static/img/iha-logo.jpeg" width="82" height="70" class="d-inline-block align-top" alt="" loading="lazy">
+      <span class="brand-name"> A Virtual Internship Hub for Christites </span>
+      
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          
+          <% if(!pub) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/iha-admin/post">Internships</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/iha-admin">Hello Admin!!</a>
+            </li>
+          <% } else { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/internships">Internships</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/#about">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact Us</a>
+            </li>
+
+          <% if(user) { %>
+            <li class="nav-item dropdown dropdown-hover">
+                <div class="nav-link dropdown-toggle" id="profile_menu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="user-icon"><%= user.firstname.charAt(0) %></div>
+                </div>
+                <div class="dropdown-menu" aria-labelledby="profile_menu">
+                  <div class="profile-container">
+                    <div class="profile_name"><%= user.firstname + ' ' + user.lastname %></div>
+                    <div class="grey"><%= user.username %></div>
+                    <div class="grey"><%= user.email %></div>
+                  </div>
+                  <a class="dropdown-item" href="/user">My Applications</a>
+                  <a class="dropdown-item" href="/user/resume">Edit Resume</a>
+                  <a class="dropdown-item" href="/user/logout">Log Out</a>
+                </div>
+              </li>
+          <% } else { %>
+              <li class="nav-item ">
+                    <button type="button" class="btn btn-outline-primary login" data-toggle="modal" data-target="#login-modal">Login</button>
+
+              </li>
+              <li class="nav-item ">
+                  <a href="/user/register">
+                    <button type="button" class="btn btn-primary">Register</button>
+                  </a>
+              </li>
+          <% } %>
+        <% } %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+

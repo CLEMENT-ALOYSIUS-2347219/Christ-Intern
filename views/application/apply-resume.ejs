@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+<%- include('../partials/post_nav', {user: user, pub: pub}) %>
+
+<div class="container">
+    <div class="alert alert-primary content-lite" role="alert">
+        <div class="row">
+            <div class="col-8">
+                <div class="font-weight-bold"> Applying to <%= post.title + ' ' + ((post.isWFH)?'work from home job/internship ':'Internship in '+ post.location) + ' through GradGlide ' %></div>
+                This is the resume that the employer will see, make sure it is up to date. You can add or edit details below.
+            </div>
+            <div class="col-3 offset-1 d-flex">
+                <a href="/user/application/form/<%= post._id %>" style="margin: auto;">
+                    <button class="btn btn-block btn-primary" style="margin: auto;">Proceed to application</button>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+    <%- include('../user/resume', {user: user, internal: true, pub: pub}) %>
+</div>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,207 @@
+<% if(!internal) { %>
+<%- include('../partials/header') %>
+<%- include('../partials/post_nav', {pub: false}) %>
+
+<div class="container">
+    <h3 class="heading content-lite"> New internship opportunity</h3>
+<div class=" content">
+    <% } %>
+<form id="new_post">
+    <div class="form-row">
+        <div class="form-group col-12">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" name="title" placeholder="e.g. Web Development" required>
+        </div>
+        <div class="form-group col-12">
+            <label for="location">Location</label>
+            <input type="text" class="form-control" name="location" placeholder="e.g. Jaipur" required>
+        </div>
+        <div class="form-group" style="padding-left: 5px;">
+            <div class="form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" name="isWFH" value="true" >
+                <label for="" class="form-check-label">Work from home</label>
+            </div>
+        </div>
+        <div class="form-group col-12">
+            <label for="startD">Start Date</label>
+            <input type="text" class="form-control" name="startD" placeholder="e.g. Immediately" required>
+        </div>
+        <div class="form-group col-12">
+            <label for="duration">Duration</label>
+            <input type="text" class="form-control" name="duration" placeholder="e.g. 2 Months" required>
+        </div>
+        <div class="form-group col-12">
+            <label for="stipend">Stipend</label>
+            <input type="text" class="form-control" name="stipend" placeholder="e.g. 2000/month" required>
+        </div>
+        <div class="form-group col-12">
+            <label for="applyBy">Apply By</label>
+            <input type="date" class="form-control" name="applyBy" placeholder="e.g. 14 Sep' 20" required>
+        </div>
+        <div class="form-group col-12">
+            <label for="about">About the internship </label>
+            <textarea class="form-control" name="about" id="" placeholder="About the internship...." cols="5" rows="8"></textarea>
+        </div>
+        <div class="form-group col-12">
+            <label for="skills">Skills required  <span class="label_hint">(# to separate)</span></label>
+            <input type="text" class="form-control" name="skills" placeholder="e.g. PHP#HTML#Python" required>
+        </div>
+        <div class="form-group col-12">
+            <label for="eligibility">Eligibility </label>
+            <textarea class="form-control" name="eligibility" id="" placeholder="Who can apply...." cols="5" rows="8"></textarea>
+        </div>
+        <div class="form-group col-12">
+            <label for="perks">Perks </label>
+            <textarea class="form-control" name="perks" id="" placeholder="Perks...." cols="5" rows="8"></textarea>
+        </div>
+        <div class="form-group col-12">
+            <label for="noOpen">Number of openings</label>
+            <input type="number" class="form-control" name="noOpen" placeholder="e.g. 4" required>
+        </div>
+
+        <div class="form-group col-12">
+            <label for="q1_q">Question 1 Label</label>
+            <input type="text" class="form-control" name="q1_q" placeholder="e.g. Why should you be hired for this role?" required>
+        </div>
+        <div class="form-group col-12">
+            <label for="q1_s">Question 1 sub label</label>
+            <input type="text" class="form-control" name="q1_s" placeholder="e.g. <Name>, please answer this question carefully. It will increase your chances of getting hired." required>
+        </div>
+        <div class="form-group col-12">
+            <label for="q1_p">Question 1 placeholder</label>
+            <input type="text" class="form-control" name="q1_p" placeholder="e.g. Mention in detail what relevant skill or past experience you have for this internship. What excites you about this internship? Why would you be a good fit?" required>
+        </div>
+        <div class="form-group col-12">
+            <label for="q2_q">Question 2 Label</label>
+            <input type="text" class="form-control" name="q2_q" placeholder="e.g. Are you available for 1 month, starting immediately, for a work from home internship? If not, what is the time period you are available for and the earliest date you can start this internship on?" required>
+        </div>
+        <div class="form-group col-12">
+            <label for="q2_s">Question 2 sub label  <span class="label_hint">(Optional)</span></label>
+            <input type="text" class="form-control" name="q2_s" placeholder="e.g.Optional Sub label" >
+        </div>
+        <div class="form-group col-12">
+            <label for="q2_p">Question 2 placeholder</label>
+            <input type="text" class="form-control" name="q2_p" placeholder="e.g. I am available full time in Pune for the next 6 months, but will have exams for 15 days in June." required>
+        </div>
+        <div class="form-group col-12">
+            <label for="q3_q">Question 3 Label  <span class="label_hint">(Optional)</span></label>
+            <input type="text" class="form-control" name="q3_q" placeholder="e.g. Enter your email id for future communication?" >
+        </div>
+        <div class="form-group col-12">
+            <label for="q3_s">Question 3 sub label  <span class="label_hint">(Optional)</span></label>
+            <input type="text" class="form-control" name="q3_s" placeholder="e.g. If you want to share any documents or files, please upload it on Google Drive or Dropbox and paste the public link in the answer." >
+        </div>
+        <div class="form-group col-12">
+            <label for="q3_p">Question 3 placeholder  <span class="label_hint">(Optional)</span></label>
+            <input type="text" class="form-control" name="q3_p" placeholder="e.g. Enter text ...." >
+        </div>
+        <button type="submit" class="btn btn-primary submit-btn">Save</button>
+    </div>
+</form>
+</div>
+</div>
+<div class="toast toast-success slideInUp" id="succesmsg" role="alert" data-animation="true" data-autohide="true"
+  data-delay="5000" aria-live="assertive" aria-atomic="true">
+  <div class="toast-body">
+    Successfully Saved !!!
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
+
+<script>
+    $("#new_post input[name='isWFH']").on('change', () => {
+        if($("#new_post input[name='isWFH']").is(':checked')) {
+            $("#new_post input[name='location']").val('Work from Home');
+            $("#new_post input[name='location']").attr('disabled', true);
+        } else {
+            $("#new_post input[name='location']").attr('disabled', false);
+            $("#new_post input[name='location']").val('');
+        }
+    })
+
+function del_post(event, arg) {
+    if (confirm("Are you sure you want to delete this? ")) {
+        event.preventDefault();
+        $.ajax({
+            type: 'DELETE',
+            url: '/iha-admin/post/' + arg,
+            dataType: 'json',
+            success: function (response) {
+                $('#succesmsg').children('.toast-body').text(response.message);
+                $('#succesmsg').toast('show');
+                setTimeout(() => {
+                    location.reload();
+                }, 2000);
+            }
+        });
+        location.replace('/iha-admin/post')
+    } else {
+        event.preventDefault();
+    }
+}
+function edit_post (event, arg) {
+    event.preventDefault();
+    $.ajax({
+        type: 'GET',
+        url: '/iha-admin/ajax/post/'+arg,
+        dataType: 'json',
+        success: function (response) {
+            $('#new_post')[0].reset();
+            $('#new_post').find('input').removeAttr('disabled');
+            $('#new_post').addClass(arg);
+            console.log(response);
+            Object.keys(response).forEach(key => {
+                $("#new_post input[type='text'][name=" + key + "]").val(response[key]);
+                $("#new_post input[type='number'][name=" + key + "]").val(response[key]);
+                $("#new_post input[type='date'][name=" + key + "]").val(convertToDate(response[key]));
+                $("#new_post textarea[name=" + key + "]").val(response[key]);
+            });
+            if(response.isWFH) {
+                $("#new_post input[name='isWFH']").prop( "checked", true );
+                $("#new_post input[name='location']").val('Work from Home');
+                $("#new_post input[name='location']").attr('disabled', true);
+            }
+            $("#new_post input[name='skills']").val($("#new_post input[name='skills']").val().replace(/\,/g,'#'));
+        }
+    });
+    $('#post-modal').modal('show');
+}
+$('#new_post').on('submit', (e) => {
+    e.preventDefault();
+    let data = $('#new_post').serializeArray();
+    let formData = {};
+    data.forEach(ele => {
+        formData[ele.name] = ele.value;
+    });
+    if(formData.isWFH) formData.isWFH = true;
+    if($('#new_post').attr('class')) {
+        myUrl = '/iha-admin/post/'+ $('#new_post').attr('class');
+    }
+    else {
+        myUrl = '/iha-admin/newpost';
+    }
+    $.ajax({
+        type: 'POST',
+        url: myUrl,
+        data: formData,
+        encode: true,
+        dataType: 'json',
+        success: function (response) {
+            $('#post-modal').modal('hide');
+            $('#succesmsg').children('.toast-body').text(response.message);
+            $('#succesmsg').toast('show');
+            setTimeout(() => {
+                location.reload();
+            }, 2000);
+        }
+    });
+});
+function convertToDate(date) { 
+    date = new Date(date);
+    let y=date.getFullYear(),
+      m=date.getMonth()<9? '0' + (date.getMonth()+1) : date.getMonth()+1,
+      d=date.getDate()< 10 ? '0' + date.getDate()  : date.getDate(); 
+      return(y+'-'+m+'-'+d);
+  }
+ </script>

@@ -1,0 +1,78 @@
+<%- include('../partials/header') %>
+<%- include('../partials/post_nav', {user: false}) %>
+
+<div id="register">
+<div class="container-fluid" >
+    <div class="row">
+        <div class=" col-12 col-sm-7">
+            <div class=" container-fluid home-banner">
+        
+                <h2>Want to lead? Get an internship. </h2>
+        <h5 class="para">Register and apply for internships.</h5>
+        <br>
+                <div>
+                    <img src="/static/img/tick.svg" alt="✔">
+                    Apply for free
+                </div>
+                <div>
+                    <img src="/static/img/tick.svg" alt="✔">
+                    100% verified
+                </div>
+                <div>
+                    <img src="/static/img/tick.svg" alt="✔">
+                    Performance based stipend
+                </div>
+            </div>
+        </div>
+        <div class="content col-12 col-sm-5">
+            <form  id="register_form">
+                <div class="row">
+                    <div class="col-6">
+                        <div class=" form-group">
+                            <label for="firstname"> First Name</label>
+                            <input type="text" name="firstname" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class=" form-group">
+                            <label for="lastname"> Last Name</label>
+                            <input type="text" name="lastname" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class=" form-group">
+                    <label for="username"> User Name</label>
+                    <input type="text" name="username" class="form-control">
+                </div>
+                <div class=" form-group">
+                    <label for="email"> Email </label>
+                    <input type="email" name="email" class="form-control">
+                </div>
+                <div class=" form-group">
+                    <label for="password"> Password </label>
+                    <input type="password" name="password" class="form-control">
+                </div>
+                <div class=" form-group">
+                    <label for="mobileNo"> Mobile Number </label>
+                    <input type="number" name="mobileNo" class="form-control">
+                </div>
+                <div class=" form-group">
+                    <label for="dob"> Date of Birth</label>
+                    <input type="date" name="dob" class="form-control">
+                </div>
+                <div class="form-group">
+                    <div id="res_container"></div>
+                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<%- include('login-modal') %>
+
+<script src="/static/js/register.min.js"></script>
+
+<%- include('../partials/footer') %>
+

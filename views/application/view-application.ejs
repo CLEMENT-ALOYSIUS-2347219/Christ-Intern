@@ -1,0 +1,410 @@
+<%- include('../partials/header') %>
+<%- include('../partials/post_nav', {pub: pub, user: user}) %>
+
+<div class="container">
+    <br><br>
+    <h4 class="heading">Below is <%= (pub)?'your':user.firstname+"'s" %> application for <a
+            href="<%=(pub)?'/internships/'+app.post._id:'/iha-admin/post/'+app.post._id %>"><%= app.post.title %></a> through GradGlide</h4>
+    <br><br>
+    <div class="content">
+        <h4 class=" text-capitalize"><%= user.firstname + ' ' + user.lastname %></h4>
+        <% if(user.email) { %>
+        <p class="line grey"><%= user.email %></p>
+        <% } %>
+        <% if(user.mobileNo) { %>
+        <p class="line grey"><%= user.mobileNo %></p>
+        <% } %>
+        <hr>
+        <h4>Assessment</h4>
+        <br>
+        <div class="font-weight-bold"> Q1. <%= app.q1 %></div>
+        <div class="grey"><%= app.ans1 %></div>
+        <br>
+        <div class="font-weight-bold"> Q2. <%= app.q2 %></div>
+        <div class="grey"><%= app.ans2 %></div>
+        <br>
+        <% if(app.q3) { %>
+        <div class="font-weight-bold"> Q3. <%= app.q3 %></div>
+        <div class="grey"><%= app.ans3 %></div>
+        <% } %>
+    </div>
+    <div class="content">
+        <h4>Resume</h4>
+        <br><br>
+        <% if( app.resume.education) { %>
+        <div class="row">
+            <div class="col-3">
+                EDUCATION
+            </div>
+            <div class="col-9">
+
+                <% if(app.resume.education.phd) { %>
+                <div class="right-row">
+                    <h6 class="line"> PhD <% if(app.resume.education.phd.phd_stream) { %>
+                        <%= ", "+ app.resume.education.phd.phd_stream %>
+                        <% } %></h6>
+                    <p class="line grey"> <%= app.resume.education.phd.phd_college %></p>
+                    <p class="line grey">
+                        <%= app.resume.education.phd.phd_start_year + " - " + app.resume.education.phd.phd_end_year  %>
+                    </p>
+                    <% if(app.resume.education.phd.phd_performance) { %>
+                    <p class="line grey"> <%= "Percentage: " + app.resume.education.phd.phd_performance +"%" %></p>
+                    <% } %>
+                </div>
+                <% } %>
+
+                <% if(app.resume.education.post_graduation) { %>
+                <div class="right-row">
+                    <h6 class="line"> <%= app.resume.education.post_graduation.post_grad_degree %>
+                        <% if(app.resume.education.post_graduation.post_grad_stream) { %>
+                        <%= ", "+ app.resume.education.post_graduation.post_grad_stream %>
+                        <% } %></h6>
+                    <p class="line grey"> <%= app.resume.education.post_graduation.post_grad_college %></p>
+                    <p class="line grey">
+                        <%= app.resume.education.post_graduation.post_grad_start_year + " - " + app.resume.education.post_graduation.post_grad_end_year  %>
+                    </p>
+                    <% if(app.resume.education.post_graduation.post_grad_performance) { %>
+                    <p class="line grey">
+                        <%= "Percentage: " + app.resume.education.post_graduation.post_grad_performance +"%" %></p>
+                    <% } %>
+                </div>
+                <% } %>
+
+                <% if(app.resume.education.graduation) { %>
+                <div class="right-row">
+                    <h6 class="line"><span id="graduation_degree"> <%= app.resume.education.graduation.grad_degree %>
+                        </span>
+                        <% if(app.resume.education.graduation.grad_stream) { %>
+                        <%= ", " %> <span
+                            id="graduation_stream"><%=app.resume.education.graduation.grad_stream %></span>
+                        <% } %></h6>
+                    <p class="line grey" id="graduation_college"> <%= app.resume.education.graduation.grad_college %>
+                    </p>
+                    <p class="line grey"><span
+                            id="graduation_start_year"><%= app.resume.education.graduation.grad_start_year %></span> -
+                        <span id="graduation_end_year"><%= app.resume.education.graduation.grad_end_year  %></span> </p>
+                    <% if(app.resume.education.graduation.grad_performance) { %>
+                    <p class="line grey" id="graduation_performance">
+                        <%= "Percentage: " + app.resume.education.graduation.grad_performance +"%" %></p>
+                    <% } %>
+
+                </div>
+                <% } %>
+
+                <% if(app.resume.education.diploma) { %>
+                <div class="right-row">
+
+                    <h6 class="line"> Diploma <% if(app.resume.education.diploma.dip_stream) { %>
+                        <%= ", "+ app.resume.education.diploma.dip_stream %>
+                        <% } %></h6>
+                    <p class="line grey"> <%= app.resume.education.diploma.dip_college %></p>
+                    <p class="line grey">
+                        <%= app.resume.education.diploma.dip_start_year + " - " + app.resume.education.diploma.dip_end_year  %>
+                    </p>
+                    <% if(app.resume.education.diploma.dip_performance) { %>
+                    <p class="line grey"> <%= "Percentage: " + app.resume.education.diploma.dip_performance +"%" %></p>
+                    <% } %>
+                </div>
+                <% } %>
+
+                <% if(app.resume.education.sen_secondary) { %>
+                <div class="right-row">
+                    <h6 class="line"> Senior Secondary (XII)
+                        <% if(app.resume.education.sen_secondary.sen_sec_stream) { %>
+                        <%= ", "+ app.resume.education.sen_secondary.sen_sec_stream %>
+                        <% } %></h6>
+                    <p class="line grey"> <%= app.resume.education.sen_secondary.sen_sec_school %></p>
+                    <p class="line grey"> (<%= app.resume.education.sen_secondary.sen_sec_board %>)</p>
+                    <p class="line grey"> Year of completion: <%= app.resume.education.sen_secondary.sen_sec_year %></p>
+                    <% if(app.resume.education.sen_secondary.sen_sec_performance) { %>
+                    <p class="line grey">
+                        <%= "Percentage: " + app.resume.education.sen_secondary.sen_sec_performance +"%" %>
+                    </p>
+                    <% } %>
+                </div>
+                <% } %>
+
+                <% if(app.resume.education.secondary) { %>
+                <div class="right-row">
+                    <h6 class="line"> Secondary (X)</h6>
+                    <p class="line grey"> <%= app.resume.education.secondary.sec_school %></p>
+                    <p class="line grey"> (<%= app.resume.education.secondary.sec_board %>)</p>
+                    <p class="line grey"> Year of completion: <%= app.resume.education.secondary.sec_year %></p>
+                    <% if(app.resume.education.secondary.sec_performance) { %>
+                    <p class="line grey"> <%= "Percentage: " + app.resume.education.secondary.sec_performance +"%" %>
+                    </p>
+                    <% } %>
+                </div>
+                <% } %>
+
+
+            </div>
+        </div>
+        <% } %>
+        <%  if(app.resume.job.length >0) { %>
+        <div class="row">
+            <div class="col-3">JOBS</div>
+            <div class="col-9">
+
+                <%  app.resume.job.forEach(j => { %>
+                <div class="right-row">
+
+
+                    <h6 class="line"> <%= j.profile %></h6>
+                    <p class="line grey"> <%= j.org %></p>
+                    <p class="line grey"> <% if(j.isWFH) { %>
+                        Work From Home
+                        <%  } else { %>
+                        <%= j.location %>
+                        <%  } %></p>
+                    <p class="line grey"> <%= j.startD.toDateString() %> - <% if (j.cWorking) { %>
+                        Present
+                        <%  } else { %>
+                        <%= j.endD.toDateString() %>
+                        <%  } %>
+                    </p>
+                </div>
+                <%  }); %>
+
+            </div>
+        </div>
+        <%  } %>
+        <%  if(app.resume.internship.length >0) { %>
+        <div class="row">
+            <div class="col-3">INTERNSHIPS</div>
+            <div class="col-9">
+                <%  app.resume.internship.forEach(i => { %>
+                <div class="right-row">
+
+                    <h6 class="line"> <%= i.profile %></h6>
+                    <p class="line grey"> <%= i.org %></p>
+                    <p class="line grey"> <% if(i.isWFH) { %>
+                        Work From Home
+                        <%  } else { %>
+                        <%= i.location %>
+                        <%  } %></p>
+                    <p class="line grey"> <%= i.startD.toDateString() %> - <% if (i.cWorking) { %>
+                        Present
+                        <%  } else { %>
+                        <%= i.endD.toDateString() %>
+                        <%  } %>
+                    </p>
+                </div>
+                <%  }); %>
+
+            </div>
+        </div>
+        <%  } %>
+        <%  if(app.resume.responsibility.length >0 ) { %>
+        <div class="row">
+            <div class="col-3">POSITIONS OF RESPONSIBILITY</div>
+            <div class="col-9">
+                
+                <%  app.resume.responsibility.forEach(r => { %>
+                <div class="right-row">
+
+                    <p class="line grey"> <%= r.desc %></p>
+                </div>
+                <%  }); %>
+
+            </div>
+        </div>
+        <%  } %>
+
+        <%  if(app.resume.training.length >0) { %>
+        <div class="row">
+            <div class="col-3">TRAININGS</div>
+            <div class="col-9">
+                <%  app.resume.training.forEach(t => { %>
+                <div class="right-row">
+
+                    <h6 class="line"> <%= t.prog %></h6>
+                    <p class="line grey"> <%= t.org + " , " %>
+                        <% if(t.isOnline) { %>
+                        Online
+                        <% } else { %>
+                        <%= t.location %>
+                        <% } %> </p>
+                    <p class="line grey"> <%= t.startD.toDateString() %> - <% if (t.cWorking) { %>
+                        Present
+                        <%  } else { %>
+                        <%= t.endD.toDateString() %>
+                        <%  } %>
+                    </p>
+                    <% if(t.desc) { %>
+                    <p class="line grey"> <%= t.desc %></p>
+                    <% } %>
+                </div>
+                <%  }); %>
+
+            </div>
+        </div>
+        <%  } %>
+        <%  if(app.resume.project.length >0) { %>
+        <div class="row">
+            <div class="col-3">PROJECTS</div>
+            <div class="col-9">
+
+                <%  app.resume.project.forEach(p => { %>
+                <div class="right-row">
+
+
+                    <h6 class="line"> <%= p.title %></h6>
+                    <p class="line grey"> <%= p.startD.toDateString() %> - <% if (p.cWorking) { %>
+                        Present
+                        <%  } else { %>
+                        <%= p.endD.toDateString() %>
+                        <%  } %>
+                    </p>
+                    <% if(p.pLink) { %>
+                    <p class="line"><a href=<%= p.pLink %> target="_blank"> <%= p.pLink %></a></p>
+                    <% } %>
+                    <% if(p.desc) { %>
+                    <p class="line grey"> <%= p.desc %></p>
+                    <%  } %>
+                </div>
+                <%  }); %>
+
+            </div>
+        </div>
+        <%  } %>
+        <%  if(app.resume.skills.length >0 ) { %>
+        <div class="row">
+            <div class="col-3">SKILLS</div>
+            <div class="col-9">
+
+                <%  app.resume.skills.forEach(s => { %>
+                <div class="col-6 half right-row skill-item">
+
+                    <h6 class="line"> <%= s.skill %></h6>
+                    <p class="line grey"> <%= s.level %></p>
+                </div>
+
+                <%  }); %>
+
+            </div>
+        </div>
+        <%  } %>
+        <%  if(app.resume.sample ) { %>
+            <div class="row">
+                <div class="col-3">WORK SAMPLES</div>
+                <div class="col-9">
+                    <%  if(app.resume.sample.blog)  { %>
+                    <div class="right-row">
+                        <h6 class="line"> Blog link </h6>
+                        <a class="line" target="_blank" href="<%= app.resume.sample.blog %>">
+                            <%= app.resume.sample.blog %></a>
+                    </div>
+                    <% } %>
+                    <%  if(app.resume.sample.github)  { %>
+                    <div class="right-row">
+                        <h6 class="line"> GitHub profile </h6>
+                        <a class="line" target="_blank" href="<%= app.resume.sample.github %>">
+                            <%= app.resume.sample.github %></a>
+                    </div>
+                    <% } %>
+                    <%  if(app.resume.sample.playstore)  { %>
+                    <div class="right-row">
+                        <h6 class="line"> Play store developer A/c (public link) </h6>
+                        <a class="line" target="_blank" href="<%= app.resume.sample.playstore %>">
+                            <%= app.resume.sample.playstore %></a>
+                    </div>
+                    <% } %>
+                    <%  if(app.resume.sample.behance)  { %>
+                    <div class="right-row">
+                        <h6 class="line"> Behance portfolio link </h6>
+                        <a class="line" target="_blank" href="<%= app.resume.sample.behance %>">
+                            <%= app.resume.sample.behance %></a>
+                    </div>
+                    <% } %>
+                    <%  if(app.resume.sample.other)  { %>
+                    <div class="right-row">
+                        <h6 class="line"> Other portfolio link </h6>
+                        <a class="line" target="_blank" href="<%= app.resume.sample.other %>" >
+                            <%= app.resume.sample.other %></a>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+            <% } %>
+
+        <%  if(app.resume.additional.length >0 ) { %>
+        <div class="row">
+            <div class="col-3">ADDITIONAL DETAILS</div>
+            <div class="col-9">
+
+                <%  app.resume.additional.forEach(d => { %>
+                <div class="right-row">
+
+                    <p class="line grey"> <%= d.detail %></p>
+                </div>
+                <%  }); %>
+
+            </div>
+        </div>
+        <%  } %>
+
+    </div>
+</div>
+
+    <% if(!pub) { %>
+        <div class="container box content-lite" id="set-status">
+            <h4>Current Status: <span class=" font-weight-light"><%= app.status %></span> </h4>
+            <br><br>
+            <div class="row text-center">
+                                
+                <% if(app.status != 'Seen') { %>
+                <div class="col">
+                    <button class=" btn btn-lg btn btn-warning" value="Seen">Seen</button>
+                </div>
+                <% } %>
+                <% if(app.status != 'Hired') { %>
+                <div class="col">
+                    <button class=" btn btn-lg btn btn-success" value="Hired">Hired</button>
+                </div>
+                <% } %>
+                <% if(app.status != 'Not Selected') { %>
+                <div class="col">
+                    <button class=" btn btn-lg btn btn-danger" value="Not Selected">Not Selected</button>
+                </div>
+                <% } %>
+                <% if(app.status != 'Completed') { %>
+                    <div class="col">
+                        <button class=" btn btn-lg btn btn-primary" value="Completed">Completed</button>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+        <div class="toast toast-success slideInUp" id="succesmsg" role="alert" data-animation="true" data-autohide="true"
+            data-delay="5000" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body">
+                    Successfully Saved !!!
+            </div>
+        </div>
+
+        <script>
+            $('#set-status .btn').on('click', (e) => {
+    let data = {
+        postId: '<%= app._id %>',
+        status:  e.target.value
+    };
+    $.ajax({
+        type:'POST',
+        url: '/iha-admin/application/setStatus',
+        data: data,
+        dataType: 'json',
+        success: (response) => {
+            $('#succesmsg').children('.toast-body').text(response.message);
+            $('#succesmsg').toast('show');
+            setTimeout(() => {
+                location.reload();
+            }, 2000);
+        }
+
+    });
+})
+        </script>
+    <% } %>
+
+<%- include('../partials/footer') %>
+

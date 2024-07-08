@@ -1,0 +1,42 @@
+<%- include('../partials/header') %>
+<%- include('../partials/post_nav', {user: user, pub: pub}) %>
+
+<div class="container box content-lite">
+    <h2 style="margin-bottom: 24px;">Assessment question</h2>
+    <div>
+        <form id="application-questions" action="/user/application/form/<%= post._id %>" method="POST">
+            <!-- <input type="hidden" name="postId" value="<%= post._id %>"> -->
+            <input type="hidden" name="userId" value="<%= user._id %>">
+            <div class="form-group">
+                <label for="ans1"><%= post.q1_q %></label>
+                <label class="label_faded"><%= post.q1_s %></label>
+                <input type="hidden" name="q1" value="<%= post.q1_q %>">
+                <textarea name="ans1" cols="30" rows="10" class="form-control" placeholder="<%= post.q1_p %>"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="ans1"><%= post.q2_q %></label>
+                <% if(post.q2_s) { %>
+                    <label class="label_faded"><%= post.q2_s %></label>
+                <% } %>
+                <input type="hidden" name="q2" value="<%= post.q2_q %>">
+                <textarea name="ans2" cols="30" rows="10" class="form-control" placeholder="<%= post.q2_p %>"></textarea>
+            </div>
+            <% if(post.q3_q) { %>
+                <div class="form-group">
+                    <label for="ans1"><%= post.q3_q %></label>
+                    <% if(post.q2_s) { %>
+                        <label class="label_faded"><%= post.q3_s %></label>
+                    <% } %>
+                    
+                    <input type="hidden" name="q3" value="<%= post.q3_q %>">
+                    <textarea name="ans3" cols="30" rows="10" class="form-control" placeholder="<%= post.q3_p %>"></textarea>
+                </div>
+            <% } %>
+            <div class="center">
+                <button class="btn btn-primary btn-lg" type="submit"> Submit </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

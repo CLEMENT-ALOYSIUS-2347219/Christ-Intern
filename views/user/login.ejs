@@ -1,0 +1,39 @@
+<%- include('../partials/header') %>
+<%- include('../partials/post_nav', {user: false, pub: true}) %>
+<div id="login">
+<div class="container">
+    <div class="row">
+        <div class=" col-12 col-sm-7">
+            <div class=" container-fluid home-banner">
+        
+                <h2>Already Registered? </h2>
+        <h5 class="para">Login and apply for internships.</h5>
+        <br>
+                
+            </div>
+        </div>
+
+        <div class="content col-sm-4">
+            <form action="/user/login" method="POST">
+                <div class=" form-group">
+                    <label for="username"> User Name</label>
+                    <input type="text" name="username" class="form-control">
+                </div>
+                <div class=" form-group">
+                    <label for="password"> Password </label>
+                    <input type="password" name="password" class="form-control">
+                </div>
+                <br>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+<%- include('../partials/footer') %>

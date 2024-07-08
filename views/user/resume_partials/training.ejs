@@ -1,0 +1,42 @@
+<form id="training_form">
+    <div class="form-row">
+        <div class="form-group col-12">
+            <label for="prog">Training program</label>
+            <input type="text" class="form-control" name="prog" id="" placeholder="e.g. Analytics" required>
+        </div>
+        <div class="form-group col-12">
+            <label for="org">Organization</label>
+            <input type="text" class="form-control" name="org" id="" placeholder="e.g. Usurper pvt ltd" required>
+        </div>
+        <div class="form-group col-12">
+            <label for="location">Location</label>
+            <input type="text" class="form-control" name="location" id="" placeholder="e.g. Mumbai" required>
+        </div>
+        <div class="form-group col-12">
+            <input class="form-check-input" type="checkbox" value="true" id="" name="isOnline">
+            <label class="form-check-label" for="isOnline" >
+                Online
+            </label>
+        </div>
+        <div class="form-group col-6">
+            <label for="startD">Start Date</label>
+            <input type="date" class="form-control" name="startD" id="" placeholder="Choose Date" required>
+        </div>
+        <div class="form-group col-6">
+            <label for="endD">End Date</label>
+            <input type="date" class="form-control" name="endD" id="" placeholder="Choose Date" required>
+        </div>
+        <div class="form-group offset-6 col-6">
+            <input class="form-check-input" type="checkbox" value="true" id="" name="cWorking">
+            <label class="form-check-label" for="cWorking">
+                Currently ongoing
+            </label>
+        </div>
+        <div class="form-group col-12">
+            <label for="desc">Description <span class="label_hint">(Optional)</span></label>
+            <textarea class="form-control" name="desc" id="" placeholder="Short description of work done....." cols="5" rows="8"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary submit-btn" value="">Save</button>
+    </div>
+
+</form>

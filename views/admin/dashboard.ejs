@@ -1,0 +1,27 @@
+
+
+
+
+<%- include('../partials/header') %>
+<%- include('../partials/post_nav', {pub: false, user: false}) %>
+
+    <div class="container ">
+        <div class="content-lite">
+        <h4 class="heading">Welcome to Admin dashboard</h4>
+    </div>
+    <div class="adminDashboard row">
+        <div class="content col-sm-4">
+            
+                <ul>
+                    <li><a href="/iha-admin/newpost">Post a New Vacancy</a></li>
+                    <br>
+                    <li><a href="/iha-admin/post">All Vacancies</a></li>
+                    <br>
+                    <li><a href="/iha-admin/applications"> Applications</a></li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </div>
+
+<%- include('../partials/footer') %>

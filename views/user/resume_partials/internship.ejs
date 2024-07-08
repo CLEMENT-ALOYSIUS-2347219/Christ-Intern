@@ -1,0 +1,43 @@
+<form id="internship_form">
+    <div class="form-row">
+        <div class="form-group col-12">
+            <label for="profile">Profile</label>
+            <input type="text" class="form-control" name="profile" id="" placeholder="e.g. St. Operations" required>
+        </div>
+        <div class="form-group col-12">
+            <label for="org">Organization</label>
+            <input type="text" class="form-control" name="org" id="" placeholder="e.g. Organization/Company name" required>
+        </div>
+        <div class="form-group col-12">
+            <label for="location">Location</label>
+            <input type="text" class="form-control" name="location" id="internship_location" placeholder="e.g. Mumbai" required>
+        </div>
+        <div class="form-group col-12">
+            <input class="form-check-input" type="checkbox" value="true" id="internship_isWFH" name="isWFH">
+            <label class="form-check-label" for="isWFH" >
+                Is work from home
+            </label>
+        </div>
+        <div class="form-group col-6">
+            <label for="startD">Start Date</label>
+            <input type="date" class="form-control" name="startD" id="" placeholder="Choose Date" required>
+        </div>
+        <div class="form-group col-6">
+            <label for="endD">End Date</label>
+            <input type="date" class="form-control" name="endD" id="internship_endD" placeholder="Choose Date" required>
+        </div>
+        <div class="form-group offset-6 col-6">
+            <input class="form-check-input" type="checkbox" value="true" id="internship_cWorking" name="cWorking">
+            <label class="form-check-label" for="cWorking">
+                Currently working here
+            </label>
+        </div>
+        <div class="form-group col-12">
+            <label for="desc">Description <span class="label_hint">(Optional)</span></label>
+            <textarea class="form-control" name="desc" id="" placeholder="Short description of work done....." cols="5" rows="8"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary submit-btn" value="">Save</button>
+    </div>
+
+</form>
+

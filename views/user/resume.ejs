@@ -1,0 +1,909 @@
+<% if (!internal) { %>
+  <%- include('../partials/header'); %>
+  <%- include('../partials/post_nav', {user: user, pub: pub}); %>
+<% } %>
+
+
+<div id="resume_div">
+  <br><br>
+  <h2 class="heading">Resume</h2>
+    <div class="container resume-container content">
+      <div class="">
+        <h3 class="cap line"><%= user.firstname + " " + user.lastname %></h3>
+        <p class="line grey"><%= user.email %></p>
+        <p class="line grey"><%= "+91  " + user.mobileNo %></p>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-3">
+          EDUCATION
+        </div>
+        <div class="col-9">
+          <% if( user.resume.education) { %>
+          <% if(user.resume.education.phd) { %>
+          <div class="right-row">
+            <div class="icon-section">
+              <a href="" class="icon edit-icon" onclick="edit(event, 'phd')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" />
+                  <path fill-rule="evenodd"
+                    d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z" />
+                </svg>
+              </a>
+              <a href="" class="icon delete-icon" onclick="del(event, 'phd')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                  <path fill-rule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                </svg>
+              </a>
+            </div>
+            <h6 class="line"> PhD <% if(user.resume.education.phd.phd_stream) { %>
+              <%= ", "+ user.resume.education.phd.phd_stream %>
+              <% } %></h6>
+            <p class="line grey"> <%= user.resume.education.phd.phd_college %></p>
+            <p class="line grey">
+              <%= user.resume.education.phd.phd_start_year + " - " + user.resume.education.phd.phd_end_year  %></p>
+            <% if(user.resume.education.phd.phd_performance) { %>
+            <p class="line grey"> <%= "Percentage: " + user.resume.education.phd.phd_performance +"%" %></p>
+            <% } %>
+          </div>
+          <% } %>
+
+          <% if(user.resume.education.post_graduation) { %>
+          <div class="right-row">
+            <div class="icon-section">
+              <a href="" class="icon edit-icon" onclick="edit(event, 'post_grad')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" />
+                  <path fill-rule="evenodd"
+                    d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z" />
+                </svg>
+              </a>
+              <a href="" class="icon delete-icon" onclick="del(event, 'post_grad')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                  <path fill-rule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                </svg>
+              </a>
+            </div>
+            <h6 class="line"> <%= user.resume.education.post_graduation.post_grad_degree %>
+              <% if(user.resume.education.post_graduation.post_grad_stream) { %>
+              <%= ", "+ user.resume.education.post_graduation.post_grad_stream %>
+              <% } %></h6>
+            <p class="line grey"> <%= user.resume.education.post_graduation.post_grad_college %></p>
+            <p class="line grey">
+              <%= user.resume.education.post_graduation.post_grad_start_year + " - " + user.resume.education.post_graduation.post_grad_end_year  %>
+            </p>
+            <% if(user.resume.education.post_graduation.post_grad_performance) { %>
+            <p class="line grey">
+              <%= "Percentage: " + user.resume.education.post_graduation.post_grad_performance +"%" %></p>
+            <% } %>
+          </div>
+          <% } %>
+
+          <% if(user.resume.education.graduation) { %>
+          <div class="right-row">
+            <div class="icon-section">
+              <a href="" class="icon edit-icon" onclick="edit(event, 'grad')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" />
+                  <path fill-rule="evenodd"
+                    d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z" />
+                </svg>
+              </a>
+              <a href="" class="icon delete-icon" onclick="del(event, 'grad')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                  <path fill-rule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                </svg>
+              </a>
+            </div>
+            <h6 class="line"><span id="graduation_degree"> <%= user.resume.education.graduation.grad_degree %> </span>
+              <% if(user.resume.education.graduation.grad_stream) { %>
+              <%= ", " %> <span id="graduation_stream"><%=user.resume.education.graduation.grad_stream %></span>
+              <% } %></h6>
+            <p class="line grey" id="graduation_college"> <%= user.resume.education.graduation.grad_college %></p>
+            <p class="line grey"><span
+                id="graduation_start_year"><%= user.resume.education.graduation.grad_start_year %></span> - <span
+                id="graduation_end_year"><%= user.resume.education.graduation.grad_end_year  %></span> </p>
+            <% if(user.resume.education.graduation.grad_performance) { %>
+            <p class="line grey" id="graduation_performance">
+              <%= "Percentage: " + user.resume.education.graduation.grad_performance +"%" %></p>
+            <% } %>
+
+          </div>
+          <% } %>
+
+          <% if(user.resume.education.diploma) { %>
+          <div class="right-row">
+            <div class="icon-section">
+              <a href="" class="icon edit-icon" onclick="edit(event, 'dip')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" />
+                  <path fill-rule="evenodd"
+                    d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z" />
+                </svg>
+              </a>
+              <a href="" class="icon delete-icon" onclick="del(event, 'dip')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                  <path fill-rule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                </svg>
+              </a>
+            </div>
+            <h6 class="line"> Diploma <% if(user.resume.education.diploma.dip_stream) { %>
+              <%= ", "+ user.resume.education.diploma.dip_stream %>
+              <% } %></h6>
+            <p class="line grey"> <%= user.resume.education.diploma.dip_college %></p>
+            <p class="line grey">
+              <%= user.resume.education.diploma.dip_start_year + " - " + user.resume.education.diploma.dip_end_year  %>
+            </p>
+            <% if(user.resume.education.diploma.dip_performance) { %>
+            <p class="line grey"> <%= "Percentage: " + user.resume.education.diploma.dip_performance +"%" %></p>
+            <% } %>
+          </div>
+          <% } %>
+
+          <% if(user.resume.education.sen_secondary) { %>
+          <div class="right-row">
+            <div class="icon-section">
+              <a href="" class="icon edit-icon" onclick="edit(event, 'sen_sec')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" />
+                  <path fill-rule="evenodd"
+                    d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z" />
+                </svg>
+              </a>
+              <a href="" class="icon delete-icon" onclick="del(event, 'sen_sec')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                  <path fill-rule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                </svg>
+              </a>
+            </div>
+            <h6 class="line"> Senior Secondary (XII) <% if(user.resume.education.sen_secondary.sen_sec_stream) { %>
+              <%= ", "+ user.resume.education.sen_secondary.sen_sec_stream %>
+              <% } %></h6>
+            <p class="line grey"> <%= user.resume.education.sen_secondary.sen_sec_school %></p>
+            <p class="line grey"> (<%= user.resume.education.sen_secondary.sen_sec_board %>)</p>
+            <p class="line grey"> Year of completion: <%= user.resume.education.sen_secondary.sen_sec_year %></p>
+            <% if(user.resume.education.sen_secondary.sen_sec_performance) { %>
+            <p class="line grey"> <%= "Percentage: " + user.resume.education.sen_secondary.sen_sec_performance +"%" %>
+            </p>
+            <% } %>
+          </div>
+          <% } %>
+
+          <% if(user.resume.education.secondary) { %>
+          <div class="right-row">
+            <div class="icon-section">
+              <a href="" class="icon edit-icon" onclick="edit(event, 'sec')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" />
+                  <path fill-rule="evenodd"
+                    d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z" />
+                </svg>
+              </a>
+              <a href="" class="icon delete-icon" onclick="del(event, 'sec')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                  <path fill-rule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                </svg>
+              </a>
+            </div>
+            <h6 class="line"> Secondary (X)</h6>
+            <p class="line grey"> <%= user.resume.education.secondary.sec_school %></p>
+            <p class="line grey"> (<%= user.resume.education.secondary.sec_board %>)</p>
+            <p class="line grey"> Year of completion: <%= user.resume.education.secondary.sec_year %></p>
+            <% if(user.resume.education.secondary.sec_performance) { %>
+            <p class="line grey"> <%= "Percentage: " + user.resume.education.secondary.sec_performance +"%" %></p>
+            <% } %>
+          </div>
+          <% } %>
+
+          <% } %>
+          <div class="add-more" data-toggle="modal" data-target="#addEducationModal" id="add-education"> + Add education
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-3">JOBS</div>
+        <div class="col-9">
+          <%  if(user.resume.job) { %>
+          <%  user.resume.job.forEach(j => { %>
+          <div class="right-row">
+            <div class="icon-section">
+              <a href="" class="icon edit-icon" onclick="edit_job(event,'<%= j._id %>')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" />
+                  <path fill-rule="evenodd"
+                    d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z" />
+                </svg>
+              </a>
+              <a href="" class="icon delete-icon" onclick="del_job(event,'<%= j._id %>')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                  <path fill-rule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                </svg>
+              </a>
+            </div>
+
+            <h6 class="line"> <%= j.profile %></h6>
+            <p class="line grey"> <%= j.org %></p>
+            <p class="line grey"> <% if(j.isWFH) { %>
+              Work From Home
+              <%  } else { %>
+              <%= j.location %>
+              <%  } %></p>
+            <p class="line grey"> <%= toD(j.startD) %> - <% if (j.cWorking) { %>
+              Present
+              <%  } else { %>
+              <%= toD(j.endD) %>
+              <%  } %>
+            </p>
+          </div>
+          <%  }); %>
+          <%  } %>
+        <%  function toD(date) { let y=date.getFullYear(),m=date.getMonth()<9? '0' + (date.getMonth()+1) : date.getMonth()+1,d=date.getDate()< 10 ? '0' + date.getDate()  : date.getDate(); return(d+'/'+m+'/'+y);} %>
+          <div class="add-more" data-toggle="modal" data-target="#job_form-modal" id="add-job"> + Add Job </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-3">INTERNSHIPS</div>
+        <div class="col-9">
+          <%  if(user.resume.internship) { %>
+          <%  user.resume.internship.forEach(i => { %>
+          <div class="right-row">
+            <div class="icon-section">
+              <a href="" class="icon edit-icon" onclick="edit_internship(event,'<%= i._id %>')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" />
+                  <path fill-rule="evenodd"
+                    d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z" />
+                </svg>
+              </a>
+              <a href="" class="icon delete-icon" onclick="del_internship(event,'<%= i._id %>')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                  <path fill-rule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                </svg>
+              </a>
+            </div>
+
+            <h6 class="line"> <%= i.profile %></h6>
+            <p class="line grey"> <%= i.org %></p>
+            <p class="line grey"> <% if(i.isWFH) { %>
+              Work From Home
+              <%  } else { %>
+              <%= i.location %>
+              <%  } %></p>
+            <p class="line grey"> <%= toD(i.startD) %> - <% if (i.cWorking) { %>
+              Present
+              <%  } else { %>
+              <%= toD(i.endD) %>
+              <%  } %>
+            </p>
+          </div>
+          <%  }); %>
+          <%  } %>
+          <div class="add-more" data-toggle="modal" data-target="#internship_form-modal" id="add-internship"> + Add Internship </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-3">POSITIONS OF RESPONSIBILITY</div>
+        <div class="col-9">
+          <%  if(user.resume.responsibility ) { %>
+          <%  user.resume.responsibility.forEach(r => { %>
+          <div class="right-row">
+            <div class="icon-section">
+              <a href="" class="icon edit-icon" onclick="edit_responsibility(event,'<%= r._id %>')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" />
+                  <path fill-rule="evenodd"
+                    d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z" />
+                </svg>
+              </a>
+              <a href="" class="icon delete-icon" onclick="del_responsibility(event,'<%= r._id %>')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                  <path fill-rule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                </svg>
+              </a>
+            </div>
+
+            <p class="line grey"> <%= r.desc %></p>
+          </div>
+          <%  }); %>
+          <%  } %>
+          <div class="add-more" data-toggle="modal" data-target="#responsibility_form-modal" id="add-responsibility"> + Add position of responsibility </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-3">TRAININGS</div>
+        <div class="col-9">
+          <%  if(user.resume.training) { %>
+          <%  user.resume.training.forEach(t => { %>
+          <div class="right-row">
+            <div class="icon-section">
+              <a href="" class="icon edit-icon" onclick="edit_training(event,'<%= t._id %>')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" />
+                  <path fill-rule="evenodd"
+                    d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z" />
+                </svg>
+              </a>
+              <a href="" class="icon delete-icon" onclick="del_training(event,'<%= t._id %>')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                  <path fill-rule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                </svg>
+              </a>
+            </div>
+
+            <h6 class="line"> <%= t.prog %></h6>
+            <p class="line grey"> <%= t.org + " , " %>  
+              <% if(t.isOnline) { %>
+              Online
+            <% } else { %>
+              <%= t.location %>
+            <% } %> </p>
+            <p class="line grey"> <%= toD(t.startD) %> - <% if (t.cWorking) { %>
+              Present
+              <%  } else { %>
+              <%= toD(t.endD) %>
+              <%  } %>
+            </p>
+            <% if(t.desc) { %>
+            <p class="line grey"> <%= t.desc %></p>
+            <% } %>
+          </div>
+          <%  }); %>
+          <%  } %>
+          <div class="add-more" data-toggle="modal" data-target="#training_form-modal" id="add-training"> + Add Training </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-3">PROJECTS</div>
+        <div class="col-9">
+          <%  if(user.resume.project) { %>
+          <%  user.resume.project.forEach(p => { %>
+          <div class="right-row">
+            <div class="icon-section">
+              <a href="" class="icon edit-icon" onclick="edit_project(event,'<%= p._id %>')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" />
+                  <path fill-rule="evenodd"
+                    d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z" />
+                </svg>
+              </a>
+              <a href="" class="icon delete-icon" onclick="del_project(event,'<%= p._id %>')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                  <path fill-rule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                </svg>
+              </a>
+            </div>
+
+            <h6 class="line"> <%= p.title %></h6>
+            <p class="line grey"> <%= toD(p.startD) %> - <% if (p.cWorking) { %>
+              Present
+              <%  } else { %>
+              <%= toD(p.endD) %>
+              <%  } %>
+            </p>
+            <% if(p.pLink) { %>
+              <p class="line"><a href=<%= p.pLink %> target="_blank"> <%= p.pLink %></a></p>
+            <% } %>
+            <% if(p.desc) { %>
+              <p class="line grey"> <%= p.desc %></p>
+            <%  } %>
+          </div>
+          <%  }); %>
+          <%  } %>
+          <div class="add-more" data-toggle="modal" data-target="#project_form-modal" id="add-project"> + Add project </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-3">SKILLS</div>
+        <div class="col-9">
+          <%  if(user.resume.skills ) { %>
+          <%  user.resume.skills.forEach(s => { %>
+            <div class="col-6 half right-row skill-item">
+            <div class="icon-section">
+              <a href="" class="icon edit-icon" onclick="edit_skill(event,'<%= s._id %>')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" />
+                  <path fill-rule="evenodd"
+                    d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z" />
+                </svg>
+              </a>
+              <a href="" class="icon delete-icon" onclick="del_skill(event,'<%= s._id %>')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                  <path fill-rule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                </svg>
+              </a>
+            </div>
+            <h6 class="line"> <%= s.skill %></h6>
+            <p class="line grey"> <%= s.level %></p>
+          </div>
+        
+          <%  }); %>
+          <%  } %>
+          <div class="add-more" data-toggle="modal" data-target="#skills_form-modal" id="add-skills"> + Add skill </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-3">WORK SAMPLES</div>
+          <div class="col-9">
+          <%  if(user.resume.sample ) { %>
+            <div class="icon-section">
+              
+            </div>
+          <%  if(user.resume.sample.blog)  { %>
+            <div class="right-row">
+              <h6 class="line"> Blog link </h6>
+              <a class="line" target="_blank" href=<%= user.resume.sample.blog %>> <%= user.resume.sample.blog %></a>
+            </div>
+          <% } %>
+          <%  if(user.resume.sample.github)  { %>
+            <div class="right-row">
+              <h6 class="line"> GitHub profile </h6>
+              <a class="line" target="_blank" href=<%= user.resume.sample.github %>> <%= user.resume.sample.github %></a>
+            </div>
+          <% } %>
+          <%  if(user.resume.sample.playstore)  { %>
+            <div class="right-row">
+              <h6 class="line"> Play store developer A/c (public link) </h6>
+              <a class="line" target="_blank" href=<%= user.resume.sample.playstore %>> <%= user.resume.sample.playstore %></a>
+            </div>
+          <% } %>
+          <%  if(user.resume.sample.behance)  { %>
+            <div class="right-row">
+              <h6 class="line"> Behance portfolio link </h6>
+              <a class="line" target="_blank" href=<%= user.resume.sample.behance %>> <%= user.resume.sample.behance %></a>
+            </div>
+          <% } %>
+          <%  if(user.resume.sample.other)  { %>
+            <div class="right-row">
+              <h6 class="line"> Other portfolio link </h6>
+              <a class="line" target="_blank" href=<%= user.resume.sample.other %>> <%= user.resume.sample.other %></a>
+            </div>
+          <% } %>
+        
+          <a class="add-more" data-toggle="modal" data-target="#sample_form-modal" id="add-sample" onclick="edit(event,'sample')"> 
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" />
+            <path fill-rule="evenodd"
+              d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z" />
+            </svg> 
+            Edit Work sample 
+          </a> 
+          <a href="" class="add-more" onclick="del(event,'sample')">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+              <path fill-rule="evenodd"
+                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+            </svg>
+            Delete work sample
+          </a>
+          
+          <%  } else { %>
+            <div class="add-more" data-toggle="modal" data-target="#sample_form-modal" id="add-sample"> + Add Work sample  </div>
+          <% } %>
+          
+      </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-3">ADDITIONAL DETAILS</div>
+        <div class="col-9">
+          <%  if(user.resume.additional ) { %>
+          <%  user.resume.additional.forEach(d => { %>
+          <div class="right-row">
+            <div class="icon-section">
+              <a href="" class="icon edit-icon" onclick="edit_additional(event,'<%= d._id %>')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" />
+                  <path fill-rule="evenodd"
+                    d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z" />
+                </svg>
+              </a>
+              <a href="" class="icon delete-icon" onclick="del_additional(event,'<%= d._id %>')">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                  <path fill-rule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                </svg>
+              </a>
+            </div>
+
+            <p class="line grey"> <%= d.detail %></p>
+          </div>
+          <%  }); %>
+          <%  } %>
+          <div class="add-more" data-toggle="modal" data-target="#additional_form-modal" id="add-additional"> + Add additional details</div>
+        </div>
+      </div>
+
+    
+    
+    </div>
+
+
+
+
+    <div class="modal fade" id="addEducationModal" tabindex="-1" role="dialog" aria-labelledby="add-education-model"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-header">
+            <h5 class="modal-title heading" id="">Education</h5>
+          </div>
+          <div class="modal-body">
+            <div class="container" id="add-educaion-wrapper">
+              <div class="add-more edu-items" data-toggle="modal" data-dismiss="modal" data-target="#grad_form-modal"
+                id="add-grad"> + Add Graduation </div>
+              <div class="add-more edu-items" data-toggle="modal" data-dismiss="modal" data-target="#sen_sec_form-modal"
+                id="add-sen_sec"> + Add Senior Seconday (XII) </div>
+              <div class="add-more edu-items" data-toggle="modal" data-dismiss="modal" data-target="#sec_form-modal"
+                id="add-sec"> + Add Seconday (X) </div>
+              <div class="add-more edu-items" data-toggle="modal" data-dismiss="modal"
+                data-target="#post_grad_form-modal" id="add-post_grad"> + Add Post Graduation </div>
+              <div class="add-more edu-items" data-toggle="modal" data-dismiss="modal" data-target="#dip_form-modal"
+                id="add-dip"> + Add Diploma</div>
+              <div class="add-more edu-items" data-toggle="modal" data-dismiss="modal" data-target="#phd_form-modal"
+                id="add-phd"> + Add PhD </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="grad_form-modal" tabindex="-1" role="dialog" aria-labelledby="grad-modal-label"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-header">
+            <h5 class="modal-title heading" id="post_grad-modal-label">Graduation details</h5>
+          </div>
+          <div class="modal-body">
+            <%- include('./resume_partials/grad') %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="post_grad_form-modal" tabindex="-1" role="dialog"
+      aria-labelledby="post_grad-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-header">
+            <h5 class="modal-title heading" id="post_grad-modal-label">Post Graduation details</h5>
+          </div>
+          <div class="modal-body">
+            <%- include('./resume_partials/post_grad', {user: user}) %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="sen_sec_form-modal" tabindex="-1" role="dialog" aria-labelledby="sen_sec-modal-label"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-header">
+            <h5 class="modal-title heading" id="sen_sec-modal-label">Senior Secondary or Equivalent (XII) details</h5>
+          </div>
+          <div class="modal-body">
+            <%- include('./resume_partials/sen_sec') %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="sec_form-modal" tabindex="-1" role="dialog" aria-labelledby="sec-modal-label"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-header">
+            <h5 class="modal-title heading" id="sec-modal-label">Secondary (X) details</h5>
+          </div>
+          <div class="modal-body">
+            <%- include('./resume_partials/sec') %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="dip_form-modal" tabindex="-1" role="dialog" aria-labelledby="dip-modal-label"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-header">
+            <h5 class="modal-title heading" id="dip-modal-label">Diploma details</h5>
+          </div>
+          <div class="modal-body">
+            <%- include('./resume_partials/diploma') %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="phd_form-modal" tabindex="-1" role="dialog" aria-labelledby="phd-modal-label"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-header">
+            <h5 class="modal-title heading" id="phd-modal-label">PhD details</h5>
+          </div>
+          <div class="modal-body">
+            <%- include('./resume_partials/phd') %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="job_form-modal" tabindex="-1" role="dialog" aria-labelledby="job_form-modal-label"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-header">
+            <h5 class="modal-title heading" id="job_form-modal-label">Job details</h5>
+          </div>
+          <div class="modal-body">
+            <%- include('./resume_partials/jobs') %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="internship_form-modal" tabindex="-1" role="dialog" aria-labelledby="internship_form-modal-label"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-header">
+            <h5 class="modal-title heading" id="internship_form-modal-label">Internship details</h5>
+          </div>
+          <div class="modal-body">
+            <%- include('./resume_partials/internship') %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="responsibility_form-modal" tabindex="-1" role="dialog" aria-labelledby="responsibility_form-modal-label"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-header">
+            <h5 class="modal-title heading" id="responsibility_form-modal-label">Position of Responsibility </h5>
+          </div>
+          <div class="modal-body">
+            <%- include('./resume_partials/resp') %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="training_form-modal" tabindex="-1" role="dialog" aria-labelledby="training_form-modal-label"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-header">
+            <h5 class="modal-title heading" id="training_form-modal-label"> Training Details </h5>
+          </div>
+          <div class="modal-body">
+            <%- include('./resume_partials/training') %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="project_form-modal" tabindex="-1" role="dialog" aria-labelledby="project_form-modal-label"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-header">
+            <h5 class="modal-title heading" id="project_form-modal-label"> Project Details </h5>
+          </div>
+          <div class="modal-body">
+            <%- include('./resume_partials/project') %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="skills_form-modal" tabindex="-1" role="dialog" aria-labelledby="skills_form-modal-label"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-header">
+            <h5 class="modal-title heading" id="skills_form-modal-label"> Skills </h5>
+          </div>
+          <div class="modal-body">
+            <%- include('./resume_partials/skill') %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="sample_form-modal" tabindex="-1" role="dialog" aria-labelledby="sample_form-modal-label"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-header">
+            <h5 class="modal-title heading" id="sample_form-modal-label"> Work samples </h5>
+          </div>
+          <div class="modal-body">
+            <%- include('./resume_partials/sample') %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="additional_form-modal" tabindex="-1" role="dialog" aria-labelledby="additional_form-modal-label"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-header">
+            <h5 class="modal-title heading" id="additional_form-modal-label"> Additionl details </h5>
+          </div>
+          <div class="modal-body">
+            <%- include('./resume_partials/additional') %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+</div>
+<div class="toast toast-success slideInUp" id="succesmsg" role="alert" data-animation="true" data-autohide="true"
+  data-delay="5000" aria-live="assertive" aria-atomic="true">
+  <div class="toast-body">
+    Successfully Saved !!!
+  </div>
+</div>
+<script src="/static/js/resume.min.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<%- include('../partials/footer'); %>
+
+
+
+
