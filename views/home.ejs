@@ -90,23 +90,27 @@
     
 </div>
 
-<div id="video" class="container content">
-    <h3 class="heading text-blue">How Christ Intern Works</h3>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/ijYARC4AhDc&t=50s" frameborder="0" allowfullscreen></iframe>
-</div>
+
 
 <div id="poll" class="container content">
     <h3 class="heading text-blue">Internship Preferences Poll</h3>
     <p>What type of internship are you most interested in?</p>
     <form id="pollForm">
         <label><input type="radio" name="pollOption" value="Technical"> Technical</label>
-        <label><input type="radio" name="pollOption" value="Marketing"> Marketing</label>
+        <label><input type="radio" name="pollOption" value="Marketing"> Non-technical</label>
         <!-- Add more options as needed -->
         <button type="submit">Submit</button>
     </form>
 </div>
 
 <script>
+    // Simple addition of 1, 4, and 7
+    const num1 = 1;
+    const num2 = 4;
+    const num3 = 7;
+    const sum = num1 + num2 + num3;
+    console.log("The sum of 1 + 4 + 7 is: " + sum);
+
     document.getElementById("pollForm").addEventListener("submit", function(event) {
         event.preventDefault(); // Prevent the form from submitting
 
@@ -123,6 +127,7 @@
         }
     });
 </script>
+
 <%- include('./user/login-modal') %>
 <script type="text/javascript" src="static/slick/slick.min.js"></script>
 <script>
@@ -142,5 +147,4 @@
     
 </script>
 
-<%- include('./partials/footer') %>
-
+<%- include('./partials/footer') %>  
